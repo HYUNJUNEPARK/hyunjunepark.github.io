@@ -104,12 +104,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s cubic-bezier(.25,.1,.25,1);
+  transition: transform 0.3s cubic-bezier(.25,.1,.25,1), box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .appCard:hover {
   transform: scale(1.02);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  background: #fff;
   text-decoration: none;
+}
+
+.appIconImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
 
 .appIcon {
@@ -136,6 +146,8 @@
   color: var(--text-secondary);
   line-height: 1.4;
   margin-bottom: 16px;
+  min-height: calc(14px * 1.4 * 2);
+  white-space: pre-line;
 }
 
 .appLink {
@@ -143,6 +155,7 @@
   font-weight: 400;
   color: var(--accent);
   margin-top: auto;
+  min-height: calc(14px * 1.47);
 }
 
 /* ── Skills ── */

@@ -5,7 +5,8 @@ import styles from './Home.module.css'
 interface App {
   name: string
   description: string
-  icon: string
+  icon?: string
+  image?: string
   gradient: string
   url: string
 }
@@ -20,32 +21,32 @@ const appCategories: AppCategory[] = [
     label: 'Mobile',
     items: [
       {
-        name: 'TaskFlow',
-        description: '직관적인 할 일 관리',
-        icon: '✓',
+        name: '무엇이든 소라고동',
+        description: '고민될 때 소라고동을\n당기면 답을 들려줍니다.',
+        image: '/images/ic-sora.png',
         gradient: 'linear-gradient(135deg, #007aff, #5856d6)',
-        url: 'https://example.com/taskflow',
+        url: 'https://example.com/sora',
       },
       {
-        name: 'FitTracker',
-        description: '피트니스 & 건강 트래커',
-        icon: '♥',
+        name: '연락처 백업',
+        description: '연락처를 안전하게\n백업하고 복원하세요.',
+        image: '/images/ic-contact.png',
+        gradient: 'linear-gradient(135deg, #34c759, #30d158)',
+        url: 'https://play.google.com/store/apps/details?id=com.canbe.contactbackup',
+      },
+      {
+        name: '비가드',
+        description: '개인정보 관리 꿀팁',
+        image: '/images/ic-beguard.png',
         gradient: 'linear-gradient(135deg, #ff3b30, #ff6482)',
-        url: 'https://example.com/fittracker',
+        url: 'https://play.google.com/store/apps/details?id=com.aos.android.passguard',
       },
       {
-        name: 'MealLog',
-        description: '간편한 식단 기록',
-        icon: '▣',
-        gradient: 'linear-gradient(135deg, #5856d6, #af52de)',
-        url: 'https://example.com/meallog',
-      },
-      {
-        name: 'SleepWell',
-        description: '수면 패턴 분석',
-        icon: '☽',
-        gradient: 'linear-gradient(135deg, #5e5ce6, #1c1c4e)',
-        url: 'https://example.com/sleepwell',
+        name: '좋은 생각 카드',
+        description: '명언, 동기부여, 고민해결',
+        image: '/images/ic-good-idea.png',
+        gradient: 'linear-gradient(135deg, #d1d1d6, #a1a1a6)',
+        url: 'https://play.google.com/store/apps/details?id=com.aos.goodideacard',
       },
     ],
   },
@@ -53,11 +54,11 @@ const appCategories: AppCategory[] = [
     label: 'Web',
     items: [
       {
-        name: 'WeatherNow',
-        description: '실시간 날씨 정보',
-        icon: '☀',
-        gradient: 'linear-gradient(135deg, #34c759, #30d158)',
-        url: 'https://example.com/weathernow',
+        name: '각종 웹사이트',
+        description: '제품 랜딩 페이지 &\n프로모션 사이트',
+        image: '/images/ic-browser.svg',
+        gradient: 'linear-gradient(135deg, #1d1d1f, #424245)',
+        url: '',
       },
     ],
   },
@@ -65,11 +66,11 @@ const appCategories: AppCategory[] = [
     label: 'Desktop',
     items: [
       {
-        name: 'NoteSync',
-        description: '클라우드 메모 & 노트',
-        icon: '✎',
-        gradient: 'linear-gradient(135deg, #ff9500, #ffcc00)',
-        url: 'https://example.com/notesync',
+        name: 'AI 투자 솔루션',
+        description: 'AI 멀티 에이전트 주식 분석',
+        image: '/images/ic-ai-stock-solution.png',
+        gradient: 'linear-gradient(135deg, #007aff, #5856d6)',
+        url: 'https://hyunjunepark.github.io/ai-stock-analyst-download-page',
       },
     ],
   },
@@ -99,8 +100,7 @@ const techStack: SkillGroup[] = [
   {
     category: 'Frontend',
     skills: [
-      { name: 'React', bg: '#222', color: '#61dafb' },
-      { name: 'Next.js', bg: '#000', color: '#fff' },
+      { name: 'React / Next.js', bg: '#222', color: '#61dafb' },
     ],
   },
   {
@@ -161,9 +161,13 @@ export default function Home() {
             <div className={styles.appGrid4}>
               {appCategories[0].items.map((app) => (
                 <a key={app.name} href={app.url} target="_blank" rel="noopener noreferrer" className={styles.appCard}>
-                  <div className={styles.appIcon} style={{ background: app.gradient }}>
-                    <span>{app.icon}</span>
-                  </div>
+                  {app.image ? (
+                    <img src={app.image} alt={app.name} className={styles.appIconImg} />
+                  ) : (
+                    <div className={styles.appIcon} style={{ background: app.gradient }}>
+                      <span>{app.icon}</span>
+                    </div>
+                  )}
                   <h3 className={styles.appName}>{app.name}</h3>
                   <p className={styles.appDesc}>{app.description}</p>
                   <span className={styles.appLink}>자세히 보기 →</span>
@@ -177,16 +181,35 @@ export default function Home() {
             {appCategories.slice(1).map((category) => (
               <div key={category.label} className={styles.appCategory}>
                 <h3 className={styles.appCategoryLabel}>{category.label}</h3>
-                {category.items.map((app) => (
-                  <a key={app.name} href={app.url} target="_blank" rel="noopener noreferrer" className={styles.appCard}>
-                    <div className={styles.appIcon} style={{ background: app.gradient }}>
-                      <span>{app.icon}</span>
+                {category.items.map((app) =>
+                  app.url ? (
+                    <a key={app.name} href={app.url} target="_blank" rel="noopener noreferrer" className={styles.appCard}>
+                      {app.image ? (
+                        <img src={app.image} alt={app.name} className={styles.appIconImg} />
+                      ) : (
+                        <div className={styles.appIcon} style={{ background: app.gradient }}>
+                          <span>{app.icon}</span>
+                        </div>
+                      )}
+                      <h3 className={styles.appName}>{app.name}</h3>
+                      <p className={styles.appDesc}>{app.description}</p>
+                      <span className={styles.appLink}>자세히 보기 →</span>
+                    </a>
+                  ) : (
+                    <div key={app.name} className={styles.appCard}>
+                      {app.image ? (
+                        <img src={app.image} alt={app.name} className={styles.appIconImg} />
+                      ) : (
+                        <div className={styles.appIcon} style={{ background: app.gradient }}>
+                          <span>{app.icon}</span>
+                        </div>
+                      )}
+                      <h3 className={styles.appName}>{app.name}</h3>
+                      <p className={styles.appDesc}>{app.description}</p>
+                      <span className={styles.appLink}>&nbsp;</span>
                     </div>
-                    <h3 className={styles.appName}>{app.name}</h3>
-                    <p className={styles.appDesc}>{app.description}</p>
-                    <span className={styles.appLink}>자세히 보기 →</span>
-                  </a>
-                ))}
+                  )
+                )}
               </div>
             ))}
           </div>
