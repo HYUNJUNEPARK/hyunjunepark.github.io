@@ -2,6 +2,13 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import styles from './Home.module.css'
 
+import icSora from '../assets/images/ic-sora.png'
+import icContact from '../assets/images/ic-contact.png'
+import icBeguard from '../assets/images/ic-beguard.png'
+import icGoodIdea from '../assets/images/ic-good-idea.png'
+import icBrowser from '../assets/images/ic-browser.svg'
+import icAiStock from '../assets/images/ic-ai-stock-solution.png'
+
 interface App {
   name: string
   description: string
@@ -24,7 +31,7 @@ const appCategories: AppCategory[] = [
       {
         name: '무엇이든 소라고동',
         description: '고민될 때 소라고동을\n당기면 답을 들려줍니다.',
-        image: '/images/ic-sora.png',
+        image: icSora,
         gradient: 'linear-gradient(135deg, #007aff, #5856d6)',
         url: '',
         badge: 'Coming Soon',
@@ -32,21 +39,21 @@ const appCategories: AppCategory[] = [
       {
         name: '연락처 백업',
         description: '연락처를 안전하게\n백업하고 복원하세요.',
-        image: '/images/ic-contact.png',
+        image: icContact,
         gradient: 'linear-gradient(135deg, #34c759, #30d158)',
         url: 'https://play.google.com/store/apps/details?id=com.canbe.contactbackup',
       },
       {
         name: '비가드',
         description: '개인정보 관리 꿀팁',
-        image: '/images/ic-beguard.png',
+        image: icBeguard,
         gradient: 'linear-gradient(135deg, #ff3b30, #ff6482)',
         url: 'https://play.google.com/store/apps/details?id=com.aos.android.passguard',
       },
       {
         name: '좋은 생각 카드',
         description: '명언, 동기부여, 고민해결',
-        image: '/images/ic-good-idea.png',
+        image: icGoodIdea,
         gradient: 'linear-gradient(135deg, #d1d1d6, #a1a1a6)',
         url: 'https://play.google.com/store/apps/details?id=com.aos.goodideacard',
       },
@@ -58,7 +65,7 @@ const appCategories: AppCategory[] = [
       {
         name: '각종 웹사이트',
         description: '제품 랜딩 페이지 &\n프로모션 사이트',
-        image: '/images/ic-browser.svg',
+        image: icBrowser,
         gradient: 'linear-gradient(135deg, #1d1d1f, #424245)',
         url: '',
       },
@@ -70,7 +77,7 @@ const appCategories: AppCategory[] = [
       {
         name: 'AI 투자 솔루션',
         description: 'AI 멀티 에이전트 주식 분석',
-        image: '/images/ic-ai-stock-solution.png',
+        image: icAiStock,
         gradient: 'linear-gradient(135deg, #007aff, #5856d6)',
         url: 'https://hyunjunepark.github.io/ai-stock-analyst-download-page',
       },
