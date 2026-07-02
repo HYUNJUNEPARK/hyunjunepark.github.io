@@ -152,7 +152,7 @@ export default function Home() {
       {/* Hero */}
       <section className={styles.hero}>
         <p className={styles.eyebrow}>Creative Studio</p>
-        <h1 className={styles.title}>Mori Studio</h1>
+        <h1 className={styles.title}>MoriStudio</h1>
         <p className={styles.subtitle}>
           아이디어를 서비스로<br/>더 나은 경험을 만듭니다.
         </p>

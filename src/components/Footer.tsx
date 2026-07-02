@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <p className={styles.copyright}>
-          Copyright &copy; {new Date().getFullYear()} Mori Studio. All rights reserved.
+          Copyright &copy; {new Date().getFullYear()} MoriStudio. All rights reserved.
         </p>
       </div>
     </footer>
